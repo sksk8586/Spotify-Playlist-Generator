@@ -11,7 +11,7 @@ GRAY = "#b3b3b3"
 
 FONT_NAME = "Century"
 
-def get_info():
+def running():
     date = date_entry.get()
     string_date = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%B %Y")
     url = f"https://www.billboard.com/charts/hot-100/{date}/"
@@ -33,11 +33,11 @@ def get_info():
         auth_manager=SpotifyOAuth(
             scope="playlist-modify-private",
             redirect_uri="http://example.com",
-            client_id= "abb1ec20138848b08f3695cda37af590",
-            client_secret="ebcdca5b51274cdfb110a057523309a0",
+            client_id= "YOUR CLIENT ID HERE",
+            client_secret="YOUR CLIENT SECRET HERE",
             show_dialog=True,
-            cache_path="token.txt",
-            username="sk",
+            cache_path="TEXT FILE WITH ACCESS TOKEN ",
+            username="YOUR SPOTIFY USERNAME",
         )
     )
 
@@ -54,7 +54,7 @@ def get_info():
             pass
     #creating playlist
     o = sp.user_playlist_create(user = "31ltn54zj7unezmbscs7jgfu6iw4", name = f"Hits from {string_date} ", public= False,
-                             description="sharvi's playlist 1")
+                             description="playlist")
 
     #adding to song playlist via song uri
     sp.playlist_add_items(items= tracks_uri_list, playlist_id= o["id"],position=None)
@@ -78,7 +78,7 @@ prompt.grid(column=1,row = 1)
 date_entry = Entry(width = 40)
 date_entry.grid(row = 2, column = 1, columnspan=2, pady=20)
 
-generate = Button(text = "Create Playlist", width= 50, command= get_info)
+generate = Button(text = "Create Playlist", width= 50, command= running
 generate.grid(columnspan=2, row = 3, pady= 20)
 
 
